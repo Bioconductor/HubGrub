@@ -1,8 +1,8 @@
 #' Display select information about hub object
 #'
 #' @param hub A hub object, either AnnotationHub or ExperimentHub.
-#' @param sourceType For the hub resources of interest, the format of the 
-#'     original resource, e.g., BED file.
+#' @param rdataclass For the hub resources of interest, the class of the R 
+#'     object used to represent the object when imported into R, e.g., 'GRanges'.
 #'
 #' @importFrom AnnotationHub subset
 #' 
@@ -10,15 +10,15 @@
 #'
 #' @examples
 #' ah = AnnotationHub()
-#' dataInfo(ah, "BigWig")
-dataInfo <- function(hub, sourceType) {
+#' dataInfo(ah, "BigWigFile")
+dataInfo <- function(hub, rdataclass) {
     stopifnot(
         is(hub, "AnnotationHub") || is(hub, "ExperimentHub"),
-        is.character(sourceType),
-        sourceType %in% unique(hub$sourcetype)
+        is.character(rdataclass),
+        rdataclass %in% unique(hub$rdataclass)
     )
 
-    sub_hub <- subset(hub, sourcetype == sourceType)
+    sub_hub <- subset(hub, rdataclass == rdataclass)
 
-    mcols(sub_hub)[,c("dataprovider", "species", "sourcetype")]
+    mcols(sub_hub) ## can display only the columns we think are of interest...
 }
