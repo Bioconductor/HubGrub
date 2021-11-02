@@ -1,13 +1,25 @@
 Package: HubGrub
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
-Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+Title: A package to search and retrieve data from Hub resources
+Version: 0.99.0
+Authors@R: c(
+    person("Kayla", "Interdonato", email = "kayla.morrell@roswellpark.org",
+        role = c("aut", "cre")),
+    person("Martin", "Morgan", role = "aut")
+Description: HubGrub provides users with functionality to discover data in the 
+    Bioconductor Hub structures. The package helps the user discover what type 
+    of data is available for retrieval and can display the metadata of that data.
+    There is also functionality to retrieve the data and import it with out 
+    needing to download the entire file. 
+License: Artistic-2.0
+Imports: AnnotationHub,
+    dplyr,
+    AnnotationDbi,
+    DBI,
+    rtracklayer,
+    tools
+biocViews: DataImport, Infrastructure, Software, ThirdPartyClient
+BugReports: https://github.com/Kayla-Morrell/HubGrub/issues
 Encoding: UTF-8
-LazyData: true
+LazyData: false
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
