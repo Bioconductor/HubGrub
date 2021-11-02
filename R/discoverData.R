@@ -15,5 +15,5 @@
 discoverData <- function(hub) {
     stopifnot(is(hub, "AnnotationHub") || is(hub, "ExperimentHub"))
 
-    enframe(table(mcols(hub)$sourcetype)) %>% arrange(desc(value))
+    enframe(table(mcols(hub)$rdataclass)) %>% arrange(desc(value))
 }
