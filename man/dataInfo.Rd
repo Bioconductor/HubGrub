@@ -4,13 +4,13 @@
 \alias{dataInfo}
 \title{Display select information about hub object}
 \usage{
-dataInfo(hub, sourceType)
+dataInfo(hub, rdataclass)
 }
 \arguments{
 \item{hub}{A hub object, either AnnotationHub or ExperimentHub.}
 
-\item{sourceType}{For the hub resources of interest, the format of the
-original resource, e.g., BED file.}
+\item{rdataclass}{For the hub resources of interest, the class of the R
+object used to represent the object when imported into R, e.g., 'GRanges'.}
 }
 \value{
 A DataFrame.
@@ -20,5 +20,5 @@ Display select information about hub object
 }
 \examples{
 ah = AnnotationHub()
-dataInfo(ah, "BigWig")
+dataInfo(ah, "BigWigFile")
 }
