@@ -27,8 +27,7 @@
 #' @param ids The hub id(s) of interest.
 #' @param which A range data structure, like a 'GRanges'.
 #' 
-#' importFrom rtracklayer import.bw import.chain import.2bit import.bed
-#' importFrom tools file_ext
+#' importFrom rtracklayer import
 #' 
 #' @return A 'GRanges'.
 #' 
@@ -42,11 +41,6 @@ importData <- function (hub, ids, which) {
     datPath <- mcols(hub[ids])$rdatapath
 
     path <- paste(tbl$location_prefix, datPath, sep = "")    
-    ext <- file_ext(path)
 
-    if (ext == "bigwig" || ext == "bw") {
-        import.bw(path, which)
-    } else {
-        message("could not be imported")
-    }
+    import(path, which = which)
 }

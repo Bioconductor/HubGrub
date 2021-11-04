@@ -1,24 +1,37 @@
 #' Display select information about hub object
 #'
 #' @param hub A hub object, either AnnotationHub or ExperimentHub.
-#' @param rdataclass For the hub resources of interest, the class of the R 
-#'     object used to represent the object when imported into R, e.g., 'GRanges'.
+#' @param fileType The type of file the user in interested in exploring, e.g. 
+#'     'BigWigFile'.
 #'
 #' @importFrom AnnotationHub subset
+#' @importFrom dplyr select
 #' 
 #' @return A DataFrame.
 #'
 #' @examples
 #' ah = AnnotationHub()
 #' dataInfo(ah, "BigWigFile")
-dataInfo <- function(hub, rdataclass) {
+dataInfo <- function(hub, fileType) {
     stopifnot(
         is(hub, "AnnotationHub") || is(hub, "ExperimentHub"),
-        is.character(rdataclass),
-        rdataclass %in% unique(hub$rdataclass)
+        .is_scalar_character(fileType),
+        fileType %in% unique(hub$rdataclass)
     )
 
     sub_hub <- subset(hub, rdataclass == rdataclass)
 
-    mcols(sub_hub) ## can display only the columns we think are of interest...
+    datInfo <- as_tibble(mcols(sub_hub), rownames = "ID") |>
+        select(
+            -c(
+                "coordinate_1_based",
+                "rdatadateadded",
+                "preparerclass",
+                "rdataclass",
+                "rdatapath",
+                "sourceurl",
+                "sourcetype"
+            )
+       )
+    datInfo
 }

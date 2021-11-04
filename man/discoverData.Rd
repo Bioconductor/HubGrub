@@ -4,7 +4,7 @@
 \alias{discoverData}
 \title{Discover what data source types are available in the specific Hub}
 \usage{
-discoverData(hub)
+discoverData(hub, fileType = types())
 }
 \arguments{
 \item{hub}{A hub object, either AnnotationHub or ExperimentHub.}

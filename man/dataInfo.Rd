@@ -4,13 +4,13 @@
 \alias{dataInfo}
 \title{Display select information about hub object}
 \usage{
-dataInfo(hub, rdataclass)
+dataInfo(hub, fileType)
 }
 \arguments{
 \item{hub}{A hub object, either AnnotationHub or ExperimentHub.}
 
-\item{rdataclass}{For the hub resources of interest, the class of the R
-object used to represent the object when imported into R, e.g., 'GRanges'.}
+\item{fileType}{The type of file the user in interested in exploring, e.g.
+'BigWigFile'.}
 }
 \value{
 A DataFrame.

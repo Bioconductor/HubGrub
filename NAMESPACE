@@ -2,6 +2,9 @@
 
 importFrom(AnnotationHub,mcols)
 importFrom(AnnotationHub,subset)
-importFrom(dplyr,"%>%")
 importFrom(dplyr,arrange)
+importFrom(dplyr,count)
 importFrom(dplyr,desc)
+importFrom(dplyr,filter)
+importFrom(dplyr,select)
+importFrom(tibble,as_tibble)
