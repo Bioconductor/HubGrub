@@ -1,0 +1,113 @@
+---
+title: "HubGrub: Grubbing for information in the Hubs"
+author:
+- name: Kayla Interdonato
+  affiliation: Roswell Park Comprehensive Cancer Center, Buffalo, NY
+- name: Martin Morgan
+  affiliation: Roswell Park Comprehensive Cancer Center, Buffalo, NY
+date: "`r Sys.Date()`"
+output:
+    BiocStyle::html_document:
+        toc: true
+        toc_float: true
+package: HubGrub
+vignette: >
+  %\VignetteIndexEntry{HubGrub: Grubbing for information in the Hubs}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEndcoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+    collapse = TRUE,
+    comment = "#>"
+)
+```
+
+# Introduction
+
+`HubGrub` is a package that provides users with functionality to discover data
+in the Bioconductor Hub structures. The package helps the user discover what
+type of data is available for retrieval and can display the metadata of that
+data. There is also functionality to retrieve the data and import it without
+needing to download the entire file. We will demonstrate all the functionality
+of the package in the following vignette.
+
+# Installation
+Install the most recent version from Bioconductor:
+
+```{r bioconductor, eval = FALSE}
+if(!requireNamesapce("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("HubGrub")
+``` 
+
+The development version is also available for install from GitHub:
+
+```{r github, eval = FALSE}
+BiocManager::install("Kayla-Morrell/HubGrub")
+```
+
+Then load `HubGrub`:
+
+```{r load, message = FALSE}
+library(HubGrub)
+```
+
+# HubGrub
+
+## Discover data in Hubs
+
+The first step when looking into the hubs is to figure out what type of data is
+available. Once a hub object is created, either from AnnotationHub or
+ExperimentHub, then the user can use `discoverData()` to see how many resources
+are available for a specific data type. For example, say we want to find out how
+many bigwig files are in Bioconductor's AnnotationHub.
+
+```{r discover}
+library(AnnotationHub)
+ah = AnnotationHub()
+discoverData(ah, "BigWigFile")
+```
+
+## Info on data in Hubs
+
+Once we figure out which files we are interested in we can use `dataInfo()` to
+see the metadata information on these files. This is where the user can narrow
+down their search to specific files they are interested in retrieving.
+
+```{r info}
+tbl <- dataInfo(ah, "BigWigFile")
+tbl
+```
+
+A user maybe intersted in specifically human files of a specific cell type. Then
+they can use `dplyr` functionality on the table to create the subset of files
+they are interested in. 
+
+```{r subset}
+
+```
+
+## Importing the files
+
+With a subset of files that the user is interested in, `importData()` will read
+in a part of the file without having to download the entire resource. These
+files can be quite large, so importing just a portion of a file can be
+beneficial to users.
+
+In order to use this function to it's fullest potential, the user should define
+a range of data that they are interested in. This range of data should be in the
+form of a `GRanges` object.
+
+```{r import}
+library(GenomicRanges)
+which <- GRanges(c("chr2", "chr2"), IRanges(c(1, 300), c(400, 1000)))
+importData(ah, "AH49544", which)
+```
+
+## Session Information
+
+```{r session}
+sessionInfo()
+```

@@ -11,12 +11,17 @@ Description: HubGrub provides users with functionality to discover data in the
     There is also functionality to retrieve the data and import it with out 
     needing to download the entire file. 
 License: Artistic-2.0
-Imports: AnnotationHub,
+Imports: 
+    AnnotationHub,
     dplyr,
     AnnotationDbi,
     DBI,
     rtracklayer,
     tools
+Suggests:
+    BiocStyle,
+    knitr,
+    rmarkdown
 biocViews: DataImport, Infrastructure, Software, ThirdPartyClient
 BugReports: https://github.com/Kayla-Morrell/HubGrub/issues
 Encoding: UTF-8
