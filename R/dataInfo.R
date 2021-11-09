@@ -5,6 +5,7 @@
 #'     'BigWigFile'.
 #'
 #' @importFrom AnnotationHub subset
+#' @importFrom tibble as_tibble
 #' @importFrom dplyr select
 #' 
 #' @return A DataFrame.
@@ -19,10 +20,10 @@ dataInfo <- function(hub, fileType) {
         fileType %in% unique(hub$rdataclass)
     )
 
-    sub_hub <- subset(hub, rdataclass == rdataclass)
+    sub_hub <- AnnotationHub::subset(hub, rdataclass == fileType)
 
     datInfo <- as_tibble(mcols(sub_hub), rownames = "ID") |>
-        select(
+        dplyr::select(
             -c(
                 "coordinate_1_based",
                 "rdatadateadded",

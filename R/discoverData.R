@@ -3,7 +3,7 @@
 #' @param hub A hub object, either AnnotationHub or ExperimentHub. 
 #'
 #' @importFrom AnnotationHub mcols
-#' @importFrom tibble as_tibble
+#' @importFrom tibble tibble
 #' @importFrom dplyr filter count arrange desc
 #'
 #' @return A tibble sorted in descending order.
@@ -17,7 +17,7 @@ discoverData <- function(hub, fileType = types()) {
         all(fileType %in% mcols(hub)$rdataclass)
     )
 
-    res <- as_tibble(DataClass = mcols(hub)$rdataclass) |>
+    res <- tibble(DataClass = mcols(hub)$rdataclass) |>
         filter(DataClass %in% fileType) |>
         count(DataClass) |>
         arrange(desc(n))
