@@ -103,7 +103,7 @@ form of a `GRanges` object.
 
 ```{r import}
 library(GenomicRanges)
-which <- GRanges(c("chr2", "chr2"), IRanges(c(1, 300), c(400, 1000)))
+which <- GRanges(c("chr2", "chr2"), IRanges(c(1, 300), c(400, 1000000)))
 importData(ah, "AH49544", which)
 ```
 
