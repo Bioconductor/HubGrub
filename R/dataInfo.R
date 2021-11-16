@@ -1,16 +1,19 @@
 #' Display select information about hub object
 #'
 #' @param hub A hub object, either AnnotationHub or ExperimentHub.
-#' @param fileType The type of file the user in interested in exploring, e.g. 
+#' @param fileType The type of file the user is interested in exploring, e.g. 
 #'     'BigWigFile'.
-#'
+#' 
+#' @importFrom methods is
 #' @importFrom AnnotationHub subset
 #' @importFrom tibble as_tibble
 #' @importFrom dplyr select
 #' 
 #' @return A DataFrame.
-#'
+#' @export
+#' 
 #' @examples
+#' library(AnnotationHub)
 #' ah = AnnotationHub()
 #' dataInfo(ah, "BigWigFile")
 dataInfo <- function(hub, fileType) {
@@ -19,6 +22,8 @@ dataInfo <- function(hub, fileType) {
         .is_scalar_character(fileType),
         fileType %in% unique(hub$rdataclass)
     )
+
+    rdataclass <- NULL
 
     sub_hub <- AnnotationHub::subset(hub, rdataclass == fileType)
 

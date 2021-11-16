@@ -4,7 +4,7 @@ Version: 0.99.0
 Authors@R: c(
     person("Kayla", "Interdonato", email = "kayla.morrell@roswellpark.org",
         role = c("aut", "cre")),
-    person("Martin", "Morgan", role = "aut")
+    person("Martin", "Morgan", role = "aut"))
 Description: HubGrub provides users with functionality to discover data in the 
     Bioconductor Hub structures. The package helps the user discover what type 
     of data is available for retrieval and can display the metadata of that data.
@@ -17,14 +17,19 @@ Imports:
     AnnotationDbi,
     DBI,
     rtracklayer,
-    tools
+    tibble,
+    methods
 Suggests:
     BiocStyle,
     knitr,
-    rmarkdown
+    rmarkdown,
+    GenomicRanges,
+    testthat (>= 3.0.0)
 biocViews: DataImport, Infrastructure, Software, ThirdPartyClient
 BugReports: https://github.com/Kayla-Morrell/HubGrub/issues
 Encoding: UTF-8
 LazyData: false
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
+VignetteBuilder: knitr
+Config/testthat/edition: 3

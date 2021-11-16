@@ -11,9 +11,7 @@ importData(hub, ids, which)
 
 \item{ids}{The hub id(s) of interest.}
 
-\item{which}{A range data structure, like a 'GRanges'.
-
-importFrom rtracklayer import}
+\item{which}{A range data structure, like a 'GRanges'.}
 }
 \value{
 A 'GRanges'.
@@ -22,7 +20,9 @@ A 'GRanges'.
 Import data of hub object
 }
 \examples{
+library(AnnotationHub)
+library(GenomicRanges)
 ah = AnnotationHub()
-which <- GRanges(c("chr2", "chr2"), IRanges(c(1, 300), c(400, 1000)))
+which <- GRanges(c("chr2", "chr2"), IRanges(c(1, 300), c(400, 1000000)))
 importData(ah, "AH49544", which)
 }

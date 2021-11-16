@@ -86,7 +86,9 @@ they can use `dplyr` functionality on the table to create the subset of files
 they are interested in. 
 
 ```{r subset}
-tbl <- tbl |> filter(species == "Homo sapiens") |> select(ID, title)
+tbl <- tbl |> 
+    dplyr::filter(species == "Homo sapiens") |> 
+    dplyr::select(ID, title)
 tail(tbl)
 ```
 

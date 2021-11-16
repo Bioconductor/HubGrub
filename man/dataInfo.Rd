@@ -9,7 +9,7 @@ dataInfo(hub, fileType)
 \arguments{
 \item{hub}{A hub object, either AnnotationHub or ExperimentHub.}
 
-\item{fileType}{The type of file the user in interested in exploring, e.g.
+\item{fileType}{The type of file the user is interested in exploring, e.g.
 'BigWigFile'.}
 }
 \value{
@@ -19,6 +19,7 @@ A DataFrame.
 Display select information about hub object
 }
 \examples{
+library(AnnotationHub)
 ah = AnnotationHub()
 dataInfo(ah, "BigWigFile")
 }

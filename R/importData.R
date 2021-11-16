@@ -1,5 +1,5 @@
-#' importFrom AnnotationDbi dbFileConnect dbfile
-#' importFrom DBI dbGetQuery dbDisconnect
+#' @importFrom AnnotationDbi dbFileConnect dbfile
+#' @importFrom DBI dbGetQuery dbDisconnect
 #' @noRd
 .resourceLocation <- function (x) {
     query <-
@@ -27,13 +27,16 @@
 #' @param ids The hub id(s) of interest.
 #' @param which A range data structure, like a 'GRanges'.
 #' 
-#' importFrom rtracklayer import
+#' @importFrom rtracklayer import
 #' 
 #' @return A 'GRanges'.
-#' 
+#' @export
+#'  
 #' @examples
+#' library(AnnotationHub)
+#' library(GenomicRanges)
 #' ah = AnnotationHub()
-#' which <- GRanges(c("chr2", "chr2"), IRanges(c(1, 300), c(400, 1000)))
+#' which <- GRanges(c("chr2", "chr2"), IRanges(c(1, 300), c(400, 1000000)))
 #' importData(ah, "AH49544", which)
 importData <- function (hub, ids, which) {
     tbl <- .idsInfo(hub, ids)

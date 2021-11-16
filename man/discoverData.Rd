@@ -8,6 +8,9 @@ discoverData(hub, fileType = types())
 }
 \arguments{
 \item{hub}{A hub object, either AnnotationHub or ExperimentHub.}
+
+\item{fileType}{The type of file the user is intersted in exploring, e.g.
+'BigWigFile'.}
 }
 \value{
 A tibble sorted in descending order.
@@ -16,6 +19,7 @@ A tibble sorted in descending order.
 Discover what data source types are available in the specific Hub
 }
 \examples{
+library(AnnotationHub)
 ah = AnnotationHub()
 discoverData(ah)
 }
